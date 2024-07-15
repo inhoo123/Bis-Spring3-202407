@@ -12,7 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.callor.hello.models.HomeVo;
+import com.callor.hello.models.HomeVO;
 import com.callor.hello.service.HomeService;
 
 /**
@@ -68,7 +68,7 @@ public class HomeController {
 		return "next";
 	}
 	@RequestMapping(value = "/home",method=RequestMethod.POST)
-	public String home(HomeVo homeVo, Model model) {
+	public String home(HomeVO homeVo, Model model) {
 		List<String> list= new ArrayList<String>();
 		list.add(homeVo.getC_name());
 		list.add(homeVo.getC_tel());
