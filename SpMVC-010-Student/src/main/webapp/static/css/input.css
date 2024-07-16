@@ -1,0 +1,12 @@
+@charset "UTF-8";
+section.student.intput {
+  background-color: #eee;
+  padding: 1rem;
+  form {
+    width: 70%;
+    margin: 10px auto;
+    fieldset {
+      border: 1px solid #aaa;
+    }
+  }
+}

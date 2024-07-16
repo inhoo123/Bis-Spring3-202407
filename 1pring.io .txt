@@ -1,0 +1,108 @@
+1pring.io 
+프로젝트메뉴
+project에서 springtools 4
+or
+github.callor 개발환경 
+spring tool suite 3
+----STS---------------------
+Spring Tool Suite 3.9.18
+full distribution on Eclipse 4.21
+https://download.springsource.com/release/STS/3.9.18.RELEASE/dist/e4.21/spring-tool-suite-3.9.18.RELEASE-e4.21.0-win32-x86_64.zip
+
+7zip압축해제 stsbundle
+----TOMCAT---------------
+tomcat.apche.org
+tomcat 9 선택
+64bit window 버전다운
+압축풀기
+
+
+-----JDK-15.0.2--------------
+java.com
+java develpment kit 
+java 15 선택
+window x64 설치
+
+------Lombok------------------
+다운로드후 stsbundle 
+sts-3.9.18.RELEASE에 다운로드
+lombok.jar
+주소창 복사후
+STS.ini sublime text 로 열고 
+-Dosgi.module.lock.timeout=10 밑에
+-javaagent:C:\Users\KMS505303\Downloads\devTools\sts-bundle\sts-3.9.18.RELEASE\lombok.jar
+ javaagent: 한뒤 뒤에 복사
+ 
+ -JDK15.0.2 bin 클릭한후 주소창 복사 
+ openFile
+ -vm
+ C:/Users/KMS505303/Downloads/devTools/jdk-15.0.2/bin
+
+=vm설정lombok 설정해야됨 sts 
+----------------------------------------------------------------------------
+sts bundle-> release -> sts exe 실행
+C:\Users\KMS505303\Desktop\workspace\spring3 폴더 만들어서 실행
+
+왼쪽 밑 서버 삭제 
+왼쪽 위 서버 파일 델리트 체크후 삭제
+
+윈도우 
+Work Space 에서 text fiel encoding utf-8
+위 web browser 에서 chrome
+d2코딩으로 변경 스크립트 한글변경
+Refresh using native hooks or polling
+
+JSP Files 에서
+css html jsp
+ utf-8로변경
+-----------------------------------------------------------------------------------
+https://github.com/callor/Callor-SpringMVC-Template-2024
+com.callor.templates.mvc-5.2.25.zip
+다운로드 devtools 저장 7zip 여기에 압축풀기
+
+
+
+sts > simpleproject 안에 말고 밑에 content 파일 만들어서
+com.callor.templates.mvc-5.2.25 복붙
+
+
+file 메뉴 new-> Spring legacy projecet
+오른쪽 밑  파란색 글자 클릭후
+템플릿 3개 삭제
+
+서버 왼쪽 링크 클릭
+톰캣 9 browse 톰캣 다운받은거 클릭 피니쉬
+file import
+
+window >perspective > customize Perspective > menu visibility 에서 설정
+
+프로젝트만들고
+ 
+pom.xml 15 java 하고 
+maven update project
+
+css 열때  external programs 하고 
+visual studio code 원본 파일 
+use this editor for all main.css
+
+
+logging
+	<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.34</version>
+			<scope>provided</scope>
+		</dependency>
+
+ servlet 사이에 넣기
+
+MySQL Community Downloads
+https://dev.mysql.com/downloads/installer/
+
+MySQL Server 8.0.38 -x64
+MySQL Workbench 8.0.38 -x64
+MySQL Router 8.0.38 -x64
+MySQL Shell 8.0.38 -x64
+
+!Biz8080

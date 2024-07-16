@@ -1,0 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set value="${pageContext.request.contextPath }" var="rootPath" />
+<head>
+<meta charset="UTF-8" />
+<title>학생관리시스템</title>
+<link href="${rootPath }/static/css/main.css" rel="stylesheet" />
+<script src="${rootPath }/satic/js/main.js"></script>
+</head>
