@@ -20,6 +20,6 @@ public class StudentVO {
 	private String st_dept;
 	private String st_grade;
 	private String st_tel;
-	private String st_adress;
+	private String st_addr;
 	
 }
