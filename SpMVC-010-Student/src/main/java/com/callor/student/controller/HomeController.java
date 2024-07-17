@@ -50,4 +50,15 @@ public class HomeController {
 		return "redirect:/";
 	}
 
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public String detail(String st_num, Model model) {
+		StudentVO studentVO = studentDao.findBYid(st_num);
+		model.addAttribute("ST",studentVO);
+		return "student/detail";
+	}
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String delete(String st_num) {
+		int result = studentDao.delete(st_num);
+		return "redirect:/";
+	}
 }
