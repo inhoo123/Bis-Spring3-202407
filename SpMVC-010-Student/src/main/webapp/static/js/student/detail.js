@@ -1,17 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
   const section_detail = document.querySelector("section.student.detail");
+  const btn_list = section_detail?.querySelector("button.list");
+  const btn_update = section_detail?.querySelector("button.update");
+  const btn_delete = section_detail?.querySelector("button.delete");
 
-  const btn_list = document.querySelector("button.list");
-  const btn_update = document.querySelector("button.update");
-  const btn_delte = document.querySelector("button.delete");
-
-  btn_list?.addEventListener("click", () => {
-    document.location.href = `${roofPath}/`;
+  btn_list.addEventListener("click", () => {
+    document.location.href = `${rootPath}/`;
   });
-  btn_delte?.addEventListener("click", () => {
-    if (confirm("정말 학생정보 삭제할까요?")) {
+  btn_delete?.addEventListener("click", (e) => {
+    if (confirm("정말 학생정보를 삭제할까요?")) {
       const st_num = e.target.dataset.st_num;
-      document.location.replace = `${roofPath}/delete?st_num=${st_num}`;
+      document.location.replace(`${rootPath}/delete?st_num=${st_num}`);
     }
   });
 });

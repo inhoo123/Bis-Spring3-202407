@@ -26,7 +26,7 @@ public interface StudentDao {
 	public List<StudentVO> selectAll();
 
 	@Select("SELECT * FROM tbl_student WHERE st_num =#{st_num}")
-	public StudentVO findBYid(String st_num);
+	public StudentVO findByid(String st_num);
 
 	@Select("SELECT * FROM tbl_student WHERE st_tel =#{st_tel}")
 	public List<StudentVO> findBytel(String st_tel); 
@@ -39,6 +39,6 @@ public interface StudentDao {
 
 	public int update(StudentVO stVO);
 
-	@Delete("DELETE * FROM tbl_student WHERE st_num =#{st_num}")
+	@Delete("DELETE FROM tbl_student WHERE st_num = #{st_num}")
 	public int delete(String st_num);
 }

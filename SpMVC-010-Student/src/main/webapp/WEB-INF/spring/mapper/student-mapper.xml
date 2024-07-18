@@ -5,25 +5,23 @@
 
 <mapper namespace="com.callor.student.persistance.StudentDao">
 
+
 	<insert id="insert">
-		INSERT INTO tbl_student (
+		INSERT INTO tbl_student(
 		st_num,st_name,st_dept,st_grade,st_tel,st_addr
-		)VALUES(
+		) VALUES (
 		#{st_num},#{st_name},#{st_dept},#{st_grade},#{st_tel},#{st_addr}
 		)
-
 	</insert>
 	<update id="update">
 		UPDATE tbl_student
 		SET
-		st_name = '#{st_name}',
-		st_dept = '#{st_dept}',
-		st_grade = '#{st_grade}',
-		st_tel = '#{st_tel}',
-		st_addr = '#{st_addr}'
-		WHERE st_num='#{st_num}'
-
+			st_name = #{st_name},
+			st_dept = #{st_dept},
+			st_grade = #{st_grade},
+			st_tel = #{st_tel},
+			st_addr = #{st_addr}
+		WHERE st_num = #{st_num}
 	</update>
-
 
 </mapper> 

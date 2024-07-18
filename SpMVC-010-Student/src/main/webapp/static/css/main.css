@@ -62,15 +62,15 @@ section.main {
   }
 
   table {
-    border-collapse: collapse; /* 중복된 테두리 제거 */
-
-    tobody {
-      tr:nth-last-of-type(odd) {
-        background-color: antiquewhite;
+    border-collapse: collapse;
+    tbody {
+      /* Table 의 tbody 내의 tr tag 가 홀수영역에 있는 요소만 배경색 변경하기 */
+      tr:nth-of-type(odd) {
+        background-color: #ddd;
       }
       tr:hover {
-        cursor: pointer;
         background-color: #fff;
+        cursor: pointer;
       }
     }
 
