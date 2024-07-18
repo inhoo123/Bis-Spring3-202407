@@ -28,7 +28,7 @@ public class HomeController {
 		List<StudentVO> stList = studentDao.selectAll();
 		model.addAttribute("ST_LIST", stList );
 		return "home";
-
+		
 	}
 	
 	// 학생정보를 입력받기 위한 화면을 보여주는 method
@@ -58,6 +58,21 @@ public class HomeController {
 		StudentVO studentVO = studentDao.findByid(st_num);
 		model.addAttribute("ST",studentVO);
 		return "student/detail";
+	}
+	@RequestMapping(value="/update",method=RequestMethod.GET)
+	public String update(String num, Model model) {
+		StudentVO studentVO = studentDao.findByid(num);
+		model.addAttribute("ST",studentVO);
+		//update 를 실행할때 소로운 update.jsp 를 만들지 않고
+		//input.jsp 를 재활용 하겠다.
+		return "student/input";
+	}
+	@RequestMapping(value="/update",method=RequestMethod.POST)
+	public String update(String num, StudentVO studentVO) {
+		studentVO.setSt_num(num);
+		
+		int result = studentDao.update(studentVO);
+		return "redirect:/detail?st_num="+num;
 	}
 
 	@RequestMapping(value="/delete", method=RequestMethod.GET)
