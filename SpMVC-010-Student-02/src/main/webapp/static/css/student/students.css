@@ -1,0 +1,23 @@
+nav.student {
+  background-color: #555;
+  color: #fff;
+  padding: 0.5rem;
+  ul {
+    list-style-type: none;
+    display: flex;
+    white-space: nowrap;
+    li {
+      margin: 5px;
+      padding: 0.5rem 2rem 0;
+      border-bottom: 2px solid transparent;
+      transition-property: all, box-shadow;
+      transition: 0.7s 3s;
+      & {
+        background-color: #777;
+        cursor: pointer;
+        border-bottom: 2px solid yellow;
+        box-shadow: inset 500px 0 0 #000;
+      }
+    }
+  }
+}

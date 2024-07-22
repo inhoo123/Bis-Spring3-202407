@@ -12,40 +12,62 @@
 
 - 다음의 dependencies 를 `maven repository`에서 검색하여 `pom.xml` 등록한다.
 ```xml
-<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+<!-- 
+spring-jdbc 로 검색
+spring webmvc 와 버전 일치시킬것
+ -->
 <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-jdbc</artifactId>
     <version>6.1.11</version>
 </dependency>
 
-<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+<!-- mybatis 로 검색하여 mybatis, mybatis-spring 찾기 -->
 <dependency>
     <groupId>org.mybatis</groupId>
     <artifactId>mybatis</artifactId>
     <version>3.5.16</version>
 </dependency>
 
-<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+<!-- 
+	mybatis-spring 은 spring-webmvc 5.2.x.RELEASE를 사용할때는
+ 3.0.0 이하 버전을 사용할것
+ -->
 <dependency>
     <groupId>org.mybatis</groupId>
     <artifactId>mybatis-spring</artifactId>
     <version>3.0.0</version>
 </dependency>
 
-<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
+<!-- dpcp로 검색하여 commons-dbcp2 를 사용할것 -->
 <dependency>
     <groupId>org.apache.commons</groupId>
     <artifactId>commons-dbcp2</artifactId>
     <version>2.12.0</version>
 </dependency>
 
-<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+<!--
+	mysql 로 검색하고
+	반드시 mysql-connector-j 를 사용할 것
+	mysql-connector-java
+	 -->
 <dependency>
     <groupId>com.mysql</groupId>
     <artifactId>mysql-connector-j</artifactId>
     <version>8.4.0</version>
 </dependency>
+```
 
+## DBMS 연동을 위한 context.xml 파일 작성하기
+- `Spring Project`의 `/WEB-INF/spring/appServlet` 폴더에 `spring bean configuration file`을 생성한다.
+- 이때 파일은 `*-context.xml` 형식의 패턴으로 이름을 정한다.
+- `*-context.xml` 형식의 패턴으로 이름을 정하면 `web.xml`에서 파일을 자동으로 인식하고 프로젝트가 실행될때 설정값을 읽어서 프로젝트를 초기화 한다.
+- 여기에서는 `db-context.xml`라는 이름으로 설정할 것이다.
+```xml
+<!-- db-context.xml 에는 다음의 3가지 bean 과 기타 설정이 추가된다 -->
+<!-- dataSource -->
+<!-- SqlSessionFactoryBean -->
+<!-- SqlSessionTemplate bean-->
 
+<!-- mybatis component scan -->
 ```
