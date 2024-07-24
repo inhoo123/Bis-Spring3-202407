@@ -11,8 +11,8 @@ renderfing 되고 client 으로 전달된다. 때로는 이러한 방식은 네�
 
 ## tiles 를 사용하기 위한 dependencies
 -tils 도구를 사용하는데 많은 코드 예제를 찾을 수 있다. 하지만 많은 예제들이
-불피요한 dependencies 를 서정하는 방법을 제시하고 있다.
--Spring MVC 프로젝트에서 tils 를 사용하기 위해서는 다음 2개의 dependencies
+불피요한 dependencies 를 t정하는 방법을 제시하고 있다.
+-Spring MVC 프로젝트에서 tils 를 사용하기한 위해서는 다음 2개의 dependencies
 
 ```xml
 <properties>

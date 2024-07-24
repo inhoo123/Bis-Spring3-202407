@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,19 +7,28 @@
 html {
   height: 100vh;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 body {
-  height: 100;
+  height: 100%;
   color: #333;
   background-color: #f4f4f4;
 }
-/*header main start*/
+
+/* header.main start */
 header.main {
   background-color: #333;
   color: #fff;
   display: flex;
-  justify-self: center;
+  justify-content: center;
   align-items: center;
+  padding: 1.3rem;
   text-align: center;
+
   img {
     margin-left: 20px;
     padding: 5px 10px 0 10px;
@@ -28,7 +38,7 @@ header.main {
     }
   }
   h1 {
-    flex: 1;
+    flex: 3;
     white-space: nowrap;
   }
   div {
@@ -37,16 +47,18 @@ header.main {
       white-space: nowrap;
       color: #fff;
       text-decoration: none;
-      display: inline block;
+      display: inline-block;
       padding: 0.5rem 1rem 0 1rem;
       border-bottom: 1px solid transparent;
-      & {
-        border-bottom: solid yellow;
+      transition: 0.7s;
+      &:hover {
+        border-bottom: 1px solid yellow;
       }
     }
   }
 }
-/*header main end*/
+/* header.main end */
+
 nav.main {
   background-color: #555;
   color: #fff;
@@ -60,8 +72,8 @@ nav.main {
       padding: 0.5rem 2rem 0;
       border-bottom: 2px solid transparent;
       transition-property: all, box-shadow;
-      transition: 0.7s 3s;
-      & {
+      transition-duration: 0.7s, 3s;
+      &:hover {
         background-color: #777;
         cursor: pointer;
         border-bottom: 2px solid yellow;
