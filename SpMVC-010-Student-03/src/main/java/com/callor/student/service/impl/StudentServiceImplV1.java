@@ -28,7 +28,7 @@ public class StudentServiceImplV1 implements StudentService {
 
 	@Override
 	public StudentVO findByid(String id) {
-		StudentVO studentVO = studentDao.findByid(id);
+		StudentVO studentVO = studentDao.findById(id);
 		studentVO.setSt_scores(scoreDao.findByStNum(id));
 		return studentVO;
 	}

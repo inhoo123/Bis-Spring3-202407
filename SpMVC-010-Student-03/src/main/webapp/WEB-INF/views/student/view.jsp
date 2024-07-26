@@ -14,6 +14,5 @@
 	<p>학년 : ${STD.st_grade }</p>
 	<p>전화번호 : ${STD.st_tel }</p>
 	<p>주소 : ${STD.st_addr }</p>
-	
 </body>
 </html>

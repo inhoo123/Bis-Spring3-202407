@@ -5,10 +5,12 @@ section.student.input {
   form {
     width: 70%;
     margin: 10px auto;
+
     fieldset {
       padding: 1rem;
       border: 1px solid #aaa;
       border-radius: 20px;
+
       legend {
         text-align: center;
         padding: 1rem;
