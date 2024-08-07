@@ -72,12 +72,45 @@ FROM tbl_score
  DESC tbl_subject;
  
  SELECT * FROM tbl_score;
- DROP VIEW view_scores;
- CREATE VIEW view_score
+ DROP VIEW scores;
  
+ -- 성적 table 에 과목명이 포함된 view 생성하기
+ CREATE VIEW view_score
+ AS
  (
  SELECT SC.*,SB.sb_name
  FROM tbl_score SC
 		JOIN tbl_subject SB
 			ON sc_sbcode = sb_code
-            )
+            );
+            DESC view_score;
+  SELECT * FROM view_score;          
+CREATE TABLE tbl_users (
+  username	VARCHAR(20)	PRIMARY KEY,
+  password	VARCHAR(255)	NOT NULL,
+  name	VARCHAR(20)	NOT NULL,
+  nick	VARCHAR(20)	NOT NULL,
+  role	VARCHAR(20)	NOT NULL
+);
+  select * from tbl_users;
+  
+  CREATE TABLE  m_memo(
+    m_seq  BIGINT PRIMARY KEY AUTO_INCREMENT, 
+	m_author VARCHAR(25) NOT NULL,
+	m_date VARCHAR(10) NOT NULL,
+	m_time VARCHAR(10) NOT NULL,
+	m_title VARCHAR(125) NOT NULL,
+    m_memo VARCHAR(125) NOT NULL,
+	m_image VARCHAR(125)
+);
+DROP TABLE m_memo;
+SELECT * FROM m_memo;
+SELECT CURDATE();
+
+SELECT CURTIME();
+
+INSERT INTO m_memo(m_seq,m_author,m_date,m_time,m_title,m_memo,m_image) 
+VALUES (m_seq,m_author,CURDATE(),CURTIME(),m_title,m_memo,m_image)
+
+
+            
