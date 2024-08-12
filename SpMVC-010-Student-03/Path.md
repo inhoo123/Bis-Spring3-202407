@@ -11,4 +11,6 @@
  -`student/` : tomcat 에게 `student` 라는 `Server`
  `Application` 이 실행되고 있는가 묻는 요청
  - `user/join` : `student` Application 에서 서비스하고
- 있는 path 또는 url 에 대하여 요청을 하기 
+ 있는 path 또는 url 에 대하여 요청을 하기, 여기에서 부터
+ Spring Application의 코딩 부분이 해당된다. `Controller`
+ 에서 처리할 부 
