@@ -6,5 +6,5 @@ public class DataGoConfigSample {
 	 * DAtaGoConfigSample 파일을
 	 */
 	public final static String GO_API_KEY = "YOUR API KEY";
-	public final static String BIS_URL ="http://api.gwangju.go.kr/xml/stationInfo";
+	public final static String BIS_URL ="http://api.gwangju.go.kr/json/stationInfo";
 }
