@@ -3,6 +3,7 @@ package com.callor.go.service.impl;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
@@ -14,6 +15,8 @@ import org.springframework.web.client.RestTemplate;
 import com.callor.go.config.DataGoConfig;
 import com.callor.go.models.BisStation;
 import com.callor.go.models.BisStationList;
+import com.callor.go.models.BusArrive;
+import com.callor.go.models.BusArriveList;
 import com.callor.go.service.BisService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -23,11 +26,11 @@ import lombok.extern.slf4j.Slf4j;
 public class BisServiceImpl implements BisService {
 
 	@Override
-	public List<BisStation> getStations() {
-
+	public List<BisStation> getStations(String station) {
+		//key
 		String apiURI = DataGoConfig.BIS_URL;
 		apiURI += "?serviceKey=" + DataGoConfig.GO_API_KEY;
-		
+		//key try catch
 		URI bisURI = null;
 		try {
 			bisURI = new URI(apiURI);
@@ -35,28 +38,81 @@ public class BisServiceImpl implements BisService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		//template
 		RestTemplate restTemplate = new RestTemplate();
-		
+		/*
+		 * 공공DB(data.go.kr)에서 Rest 방식으로 받은 데이터는
+		 * 원칙적으로 application/json typme 으로 전달된다.
+		 * 일부 공공DB 서비스중에 text/json type 으로 전달되는
+		 * 데이터가 있다
+		 * 이러한 데이터를 (text/json) 을 객체타입(application/json)으로
+		 * 변환 하기 위하여 중간에 데이터를 가로채서 처리하는 과정
+		 */
+		//
 		restTemplate.getInterceptors().add((request,body,execution)->{
 			ClientHttpResponse response = execution.execute(request, body);
 			response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
 			return response;
 		});
 		
-		ResponseEntity<BisStationList> bisList = null;
+		ResponseEntity<BisStationList> bisListEntity = null;
         
-		bisList = restTemplate.exchange(
+		bisListEntity = restTemplate.exchange(
 				bisURI,
 				HttpMethod.GET,
 				null,
 				BisStationList.class);
+		List<BisStation>bisList = bisListEntity.getBody().STATION_LIST;
+		/*
+		 * java 1.8 이상에서 사용하는 stream
+		 */
+		if(!station.isEmpty()) {
+			bisList=bisList.stream()
+			.filter(bis->bis.BUSSTOP_NAME.contains(station))
+			.collect(Collectors.toList());
+		}
+		/*
+		 * 전통적인 forEach를 사용하여 List를 filtering 하기
+		 */
+//		List<BisStation> result = new ArrayList<>();
+//		for(BisStation bis : bisList) {
+//			if(bis.BUSSTOP_NAME.contains(station)) {
+//				result.add(bis);
+//			}
+//		}
 		
-		log.debug(bisList.getBody().STATION_LIST.toString());
+		log.debug("받은데이터{}",bisList.toString());
 //		log.debug(temp.toString());
 		
-		return bisList.getBody().STATION_LIST;
+		return bisList;
 //		return null;
+	}
+
+	@Override
+	public List<BusArrive> getBusArrive(String busId) {
+		String apiURL = DataGoConfig.ARRIVE_URL;
+		apiURL += "?serviceKey=" + DataGoConfig.GO_API_KEY;
+		apiURL += "&BUSSTOP_ID=" + busId;
+		
+		log.debug(apiURL);
+		
+		URI arriveURI = null;
+		
+		try {
+			arriveURI = new URI(apiURL);
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		RestTemplate restTemplate = new RestTemplate();
+		restTemplate.getInterceptors().add((request,body,execution)->{
+			ClientHttpResponse response = execution.execute(request, body);
+			response.getHeaders().setContentType(MediaType.APPLICATION_JSON);
+			return response;
+		});
+		ResponseEntity<BusArriveList> busArriveEntity
+		=restTemplate.exchange(arriveURI,HttpMethod.GET,null,BusArriveList.class);
+		return busArriveEntity.getBody().BUSSTOP_LIST;		
 	}
 
 }
