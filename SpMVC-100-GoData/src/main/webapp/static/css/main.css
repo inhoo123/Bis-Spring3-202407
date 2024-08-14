@@ -111,6 +111,7 @@ li.title span {
 @media (max-width: 900px) {
   section.main {
     flex-direction: column;
+    scro
     section {
       width: 90%;
     }
